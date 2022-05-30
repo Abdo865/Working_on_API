@@ -9,22 +9,22 @@ import java.io.IOException;
 
 import static java.lang.Math.max;
 
-public class ExcelFuctionalities {
-    private FileInputStream inputStream;
-    private XSSFWorkbook workbook;
-    private XSSFSheet sheet;
-    private XSSFRow row;
-    private XSSFCell cell;
-    private String filePath;
-    private int rows;
-    private int col;
+public abstract class API {
+    protected FileInputStream inputStream;
+    protected XSSFWorkbook workbook;
+    protected XSSFSheet sheet;
+    protected XSSFRow row;
+    protected XSSFCell cell;
+    protected String filePath;
+    protected int rows;
+    protected int col;
 
-    public ExcelFuctionalities() throws IOException {
+    public API() throws IOException {
         inputStream = new FileInputStream(filePath);
         workbook = new XSSFWorkbook(inputStream);
     }
 
-    public ExcelFuctionalities(String filePath,int sheetNum) throws IOException {
+    public API(String filePath, int sheetNum) throws IOException {
         inputStream = new FileInputStream(filePath);
         workbook = new XSSFWorkbook(inputStream);
         sheet = workbook.getSheetAt(sheetNum);
@@ -38,15 +38,11 @@ public class ExcelFuctionalities {
         inputStream = new FileInputStream(path);
         workbook = null;
     }
-    public void setSheet(int sheetNum) {  sheet =workbook.getSheetAt(sheetNum);  }
+
+    public void setSheet(int sheetNum) {  sheet = workbook.getSheetAt(sheetNum);  }
     public void setFilePath(String filePath) {  this.filePath = filePath;  }
     public String getFilePath() {  return filePath;  }
     public int getRows() {  return rows;  }
     public int getCol() {  return col;  }
 
-    public String readingExcel(int r, int c){
-        row = sheet.getRow(r);
-        cell = row.getCell(c);
-        return cell.getStringCellValue();
-    }
 }
