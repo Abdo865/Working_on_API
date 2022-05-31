@@ -17,7 +17,7 @@ public abstract class API {
     protected XSSFCell cell;
     protected String filePath;
     protected int rows;
-    protected int col;
+
 
     public API() throws IOException {
         inputStream = new FileInputStream(filePath);
@@ -29,8 +29,6 @@ public abstract class API {
         workbook = new XSSFWorkbook(inputStream);
         sheet = workbook.getSheetAt(sheetNum);
         rows = sheet.getLastRowNum();
-        for (int i = 0;i<rows;i++)
-            col = max(col,sheet.getRow(i).getLastCellNum());
     }
 
     public void setInputStream(String path) throws FileNotFoundException {
@@ -43,6 +41,6 @@ public abstract class API {
     public void setFilePath(String filePath) {  this.filePath = filePath;  }
     public String getFilePath() {  return filePath;  }
     public int getRows() {  return rows;  }
-    public int getCol() {  return col;  }
+
 
 }

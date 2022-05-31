@@ -6,13 +6,15 @@ public class Field {
     private String allowedValues;
     private String mandatory;
     private String IO;
+    private String type;
     private ArrayList<Field> tree;
 
-    public Field(String name, String allowedValues, String mandatory, String IO) {
+    public Field(String name, String allowedValues, String mandatory, String IO, String type) {
         this.name = name;
         this.allowedValues = allowedValues;
         this.mandatory = mandatory;
         this.IO = IO;
+        this.type = type;
         tree = new ArrayList<Field>();
     }
 
