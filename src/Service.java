@@ -18,27 +18,28 @@ public class Service extends API{
         cell = row.getCell(c);
         return cell.getStringCellValue();
 
-    }
-    public String[] extractInfo(int r){
+    } //takes row and column as parameters and return the string inside this cell
+    private String[] extractInfo(int r){
         String[] info = new String[5];
         for (int i = 0; i < 5; i++)
             info[i] = readingExcel(r,i);
         return info;
-    }
+    } //getting the information of each row and return it back into an array of strings
 
-    public String[] extractFields(String s){
+    private String[] extractFields(String s){
         String[] fields = s.split("/",-1);
         return fields;
-    }
+    } // gives us the information about Field and its Childrens in an array of string
+                                                  // it will give you an empty string at the first index of the array
 
-    public Field fieldInitializer(int r){
+    private Field fieldInitializer(int r){
         String[] info = extractInfo(r);
         String[] fields = extractFields(info[1]);
-        Field f = new Field(fields[fields.length-1], info[3], info[4], info[3], info[2]);
+        Field f = new Field(info[0], fields[fields.length-1], info[2], info[3], info[4]);
         return f;
-    }
+    } //initializes each field with its parameters
 
-    public int findStartingRow(int startingFrom){
+    private int findStartingRow(int startingFrom){
         int k = startingFrom;
         if (k == -1)
             return -1;
@@ -54,9 +55,9 @@ public class Service extends API{
                 k++;
             }
         }
-    }
+    } // gives us the first row to begin with
 
-    public char objectOrField(int r){
+    private char objectOrField(int r){
         try {
             if (!(readingExcel(r, 2).equals("string")) && (extractFields(extractInfo(r)[1]).length == 2)) //normal object or major field
                 return 1;
@@ -68,7 +69,7 @@ public class Service extends API{
         }catch (NullPointerException ex){
             return 5;
         }
-    }
+    } //tells us whether it's a children or parent
 
     public boolean loopOnFields(String s){
         int first = findStartingRow(apiFinder(s));
@@ -101,9 +102,9 @@ public class Service extends API{
             }
         }
         return true;
-    }
+    } //gives the array list if the parents and childs their values
 
-    public int apiFinder(String apiName) {
+    private int apiFinder(String apiName) {
         int r = rows;
         int i= 0;
         while (r  != 0) {
@@ -115,7 +116,7 @@ public class Service extends API{
             r--;
         }
         return -1;
-    }
+    } //tells us whether the API is included or not
 
     public ArrayList<Field> getMajor() {  return major;  }
 }

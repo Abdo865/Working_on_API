@@ -29,9 +29,18 @@ public class Main {
                 continue;
             }
             for (int i =0;i<ex.getMajor().size();i++) {
-                System.out.println(ex.getMajor().get(i).getName());
-                for (int j = 0;j<ex.getMajor().get(i).getTree().size();j++)
-                    System.out.println(ex.getMajor().get(i).getTree().get(j).getName());
+                System.out.printf(ex.getMajor().get(i).getIO()+", ");
+                System.out.printf(ex.getMajor().get(i).getName()+", ");
+                System.out.printf(ex.getMajor().get(i).getType()+", ");
+                System.out.printf(ex.getMajor().get(i).getAllowedValues()+", ");
+                System.out.printf(ex.getMajor().get(i).getMandatory()+'\n');
+                for (int j = 0;j<ex.getMajor().get(i).getTree().size();j++) {
+                    System.out.printf(ex.getMajor().get(i).getTree().get(j).getIO()+", ");
+                    System.out.printf(ex.getMajor().get(i).getTree().get(j).getName()+", ");
+                    System.out.printf(ex.getMajor().get(i).getTree().get(j).getType()+", ");
+                    System.out.printf(ex.getMajor().get(i).getTree().get(j).getAllowedValues()+", ");
+                    System.out.printf(ex.getMajor().get(i).getTree().get(j).getMandatory()+"\n");
+                }
                 System.out.println("__________________________________________________");
             }
         }
