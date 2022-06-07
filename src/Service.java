@@ -1,13 +1,10 @@
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class Service extends API{
     ArrayList<Field> major;
-    public Service() throws IOException {  major = new ArrayList<Field>();  }
+    public Service(StringBuilder filePath, int sheetNum) throws IOException {  major = new ArrayList<Field>();  }
     public Service(String filePath, int sheetNum) throws IOException {
         super(filePath, sheetNum);
         major = new ArrayList<Field>();
