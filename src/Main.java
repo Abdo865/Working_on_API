@@ -28,9 +28,9 @@ public class Main extends Application {
     int idx;
 
     public void start(Stage primaryStage) throws IOException {
-        /*
-            Please make sure that you set your file location
-            manually in the filepath variable in line 35-37
+        /**
+            Please make sure that you set your file properties
+            manually in the filepath variable in line 35-36
          */
         String filePath="C:\\Users\\Dell\\Desktop\\Example.xlsx", API_NNAME="API_NAME";
         int num=1;
@@ -108,6 +108,10 @@ public class Main extends Application {
             paneG.add(vals, 1, 5);
             paneG.add(new Label("Enter File Path"), 0, 6);
             paneG.add(file_path, 1, 6);
+            paneG.add(new Label("Enter API Name"), 0, 7);
+            paneG.add(new TextField(), 1, 7);
+            paneG.add(new Label("Enter number of APIs"), 0, 8);
+            paneG.add(new TextField(), 1, 8);
             paneG.add(goBtn, 1, 10);
             Scene scene = new Scene(paneG, 500, 500);
 
