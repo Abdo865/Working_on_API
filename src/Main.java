@@ -28,21 +28,9 @@ public class Main extends Application {
     int idx;
 
     public void start(Stage primaryStage) throws IOException {
-        /**
-            Please make sure that you set your file properties
-            manually in the filepath variable in line 35-36
-         */
-        String filePath="C:\\Users\\Dell\\Desktop\\Example.xlsx", API_NNAME="API_NAME";
+        String filePath="./DataFiles/Example.xlsx", API_NNAME="API_NAME";
         int num=1;
 
-//        while(filePath.equals("")||API_NAME.equals("")||num==0){
-//            goBtn.setOnAction(e ->{
-//                filePath.append(file_path.getText());
-//                API_NAME.append(APIname.getText());
-//                int number = Integer.parseInt(nnum.getText());
-//
-//            });
-//        }
         Service ex = new Service(filePath, 0);
         String[] s = new String[1]; //to contain API names
         for (int z = 0; z < 1; z++) {
@@ -106,13 +94,6 @@ public class Main extends Application {
             paneG.add(ttype, 1, 4);
             paneG.add(AllowedVals, 0, 5);
             paneG.add(vals, 1, 5);
-            paneG.add(new Label("Enter File Path"), 0, 6);
-            paneG.add(file_path, 1, 6);
-            paneG.add(new Label("Enter API Name"), 0, 7);
-            paneG.add(new TextField(), 1, 7);
-            paneG.add(new Label("Enter number of APIs"), 0, 8);
-            paneG.add(new TextField(), 1, 8);
-            paneG.add(goBtn, 1, 10);
             Scene scene = new Scene(paneG, 500, 500);
 
             primaryStage.setTitle("Our Components");
